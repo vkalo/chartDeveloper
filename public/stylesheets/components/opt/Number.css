@@ -1,0 +1,78 @@
+.input-number-wrapper {
+  position   : relative;
+  height     : 28px;
+  color      : var(--C1-2);
+  background : var(--C2-3);
+  font-size  : 14px;
+  font-weight: 400;
+}
+
+
+.input-number-wrapper:hover .operator-box {
+  display: flex;
+}
+
+.input-number-wrapper:hover .label-box {
+  display: none;
+}
+
+.input-number-wrapper:hover input {
+  filter: brightness(130%);
+}
+
+.input-number-wrapper input {
+  position     : absolute;
+  top          : 0;
+  left         : 0;
+  padding      : 0 26px 0 5px;
+  border-radius: 4px;
+}
+
+.input-number-wrapper input :focus {
+  border: 1px solid var(--var(--C3-3));
+}
+
+.input-number-wrapper input .operator-box {
+  display: none !important;
+}
+
+.input-number-wrapper input .label-box {
+  display: block !important;
+}
+
+.input-number-wrapper .operator-box {
+  position      : absolute;
+  top           : 0;
+  right         : 0;
+  width         : 26px;
+  height        : 28px;
+  display       : none;
+  flex-direction: column;
+}
+
+.input-number-wrapper .operator-box .operator {
+  width          : 100%;
+  height         : 16px;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  cursor         : pointer;
+  border-left    : 1px solid var(--C3-1);
+  color          : var(--C1-4);
+}
+
+.input-number-wrapper .operator-box .operator:nth-child(1) {
+  border-top   : none;
+  border-bottom: 1px solid var(--C3-1);
+}
+
+.input-number-wrapper .label-box {
+  position   : absolute;
+  top        : 0;
+  right      : 0;
+  width      : 26px;
+  height     : 28px;
+  line-height: 28px;
+  text-align : center;
+  color      : var(--C1-4);
+}

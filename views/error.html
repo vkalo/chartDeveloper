@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src='/javascripts/mod.js'></script>
+  <!-- <script >
+  nazaLoader.async('/javascripts/demo/index.js',function(){console.log('加载/javascripts/GeneralTitle/index.js成功')});
+  </script> -->
+  <title>Document</title>
+  <style>
+    #button {
+      background: white;
+      color: black;
+      cursor: pointer;
+      border: 1px solid blue;
+      margin: 20px;
+    }
+
+    #button:active {
+      filter: brightness(80%);
+    }
+
+    #button:hover {
+      filter: brightness(130%);
+    }
+  </style>
+</head>
+
+<body>
+  <div id='button'>上传图表</div>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", './save', true);
+    xhr.send(null);
+    xhr.onreadystatechange(() => {
+      if (xhr.readyState == 4 && xhr.status == 200) {// 4 = "loaded"
+        alert("保存成功");
+      }
+    })
+  </script>
+</body>
+
+</html>

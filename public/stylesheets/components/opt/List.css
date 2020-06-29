@@ -1,0 +1,32 @@
+.opt-list {
+  background: var(--C2-5);
+  font-size : 14px;
+}
+
+.opt-list .opt-item .other {
+  display: flex;
+  padding: 5px 12px;
+
+}
+
+.opt-list .opt-item .other .opt-name {
+  position     : relative;
+  width        : 100px;
+  padding      : 7px 12px 7px 0;
+  overflow     : hidden;
+  white-space  : nowrap;
+  text-overflow: ellipsis;
+  color        : var(--C1-2);
+}
+
+.opt-list .opt-item .other .opt-field {
+  display    : flex;
+  align-items: center;
+  width      : 212px;
+  min-height : 26px;
+}
+
+
+.opt-list .opt-item .opt-item .other {
+  border-top: none;
+}

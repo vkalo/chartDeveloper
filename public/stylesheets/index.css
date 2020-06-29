@@ -1,0 +1,16 @@
+@import url("./components/Charts.css");
+@import url("./components/NavBar.css");
+@import url("./components/ConfigHeader.css");
+@import url("./components/PageItem.css");
+@import url("./components/opt/index.css");
+@import url("./pages/preview.css");
+@import url("./pages/config.css");
+@import url("./pages/DataPanel.css");
+@import url("./pages/Publish.css");
+
+.developer-wrapper {
+  width   : 100%;
+  height  : 100%;
+  display : flex;
+  overflow: hidden;
+}

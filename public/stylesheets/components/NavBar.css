@@ -1,0 +1,26 @@
+.base-nav-bar-wraper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  
+}
+
+.base-nav-bar-wraper .base-nav-bar-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.12rem;
+  cursor: pointer;
+  opacity: 0.5;
+  white-space: nowrap;
+
+  
+}
+
+.base-nav-bar-wraper .base-nav-bar-item.selected {
+  opacity: 1;
+  border-bottom: 2px solid rgba(156, 59, 232, 0.9);
+}

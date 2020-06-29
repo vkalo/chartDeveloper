@@ -1,0 +1,20 @@
+.config-panel-wrapper {
+  transition    : all 0.5s;
+  position      : relative;
+  background    : #262628;
+  color         : #fff;
+  user-select   : none;
+  display       : flex;
+  flex-direction: column;
+
+
+}
+
+.config-panel-wrapper .panel {
+  /* 用于面板容器 */
+  flex-grow: 1;
+
+  width    : 330px;
+  overflow : auto;
+  font-size: 12px;
+}

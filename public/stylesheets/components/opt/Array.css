@@ -1,0 +1,107 @@
+.opt-array .array-title {
+  display        : flex;
+  justify-content: space-between;
+  height         : 44px;
+  line-height    : 44px;
+  padding        : 0 12px;
+  background     : var(--C2-5);
+  color          : var(--C1-1);
+  cursor         : pointer;
+  font-size      : 14px;
+}
+
+.opt-array .array-title .tool {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+.opt-array .i-style {
+  display     : inline-block;
+  cursor      : pointer;
+  margin-right: 10px;
+  color       : var(--C1-4);
+}
+
+.opt-array .i-style:hover {
+  color: var(--C1-2);
+}
+
+.opt-array .array-container {
+  transition: height .3s ease;
+  background: var(--C2-6);
+}
+
+.opt-array .series-tab {
+  display    : flex;
+  height     : 44px;
+  line-height: 44px;
+  background : var(--C2-6);
+  font-size  : 14px;
+}
+
+.opt-array .series-tab .arrow {
+  display   : inline-block;
+  width     : 15px;
+  margin    : 0 5px;
+  text-align: center;
+  cursor    : pointer;
+  color     : var(--C1-4);
+}
+
+.opt-array .series-tab .arrow:hover {
+  color: var(--C1-1);
+}
+
+.opt-array .series-tab .tab-item-wrapper {
+  position: relative;
+  width   : calc(100% - 30px);
+  overflow: hidden;
+}
+
+.opt-array .series-tab .tab-item-wrapper .inner {
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  transition : all 0.3s ease 0s;
+  white-space: nowrap;
+  color      : var(--C1-4);
+}
+
+.opt-array .series-tab .tab-item-wrapper .inner .tab-item {
+  position: relative;
+  display : inline-block;
+  padding : 0 13px;
+  cursor  : pointer;
+}
+
+.opt-array .series-tab .tab-item-wrapper .inner .tab-item:hover {
+  color: var(--C1-2);
+}
+
+.opt-array .series-tab .tab-item-wrapper .inner .checked {
+  color: var(--C1-2);
+
+}
+
+.opt-array .series-tab .tab-item-wrapper .inner .checked a:before {
+  content      : '';
+  position     : absolute;
+  top          : 27px;
+  left         : 45%;
+  width        : 4px;
+  height       : 4px;
+  border-radius: 1px;
+}
+
+.opt-array .nothing {
+  background: var(--C2-6) !important;
+}
+
+.opt-array .nothing .opt-item:first-child .group-title {
+  border-top: none;
+}
+
+.opt-array .opt-group {
+  background: var(--C2-6) !important;
+}

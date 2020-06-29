@@ -1,0 +1,13 @@
+.text-wrapper {
+  width: 212px;
+  height: 28px;
+  background: var(--C2-1);
+  border-radius: 4px;
+  border: 1px solid var(--C3-1);
+  color: var(--C1-2);
+  font-size: 14px;
+}
+
+.text-wrapper :focus {
+  border: 1px solid var(--var(--C3-3));
+}

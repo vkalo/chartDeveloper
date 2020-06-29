@@ -1,0 +1,49 @@
+.config-header-wrapper {
+  position: relative;
+  height: 60px;
+  color: #fff;
+  background: #313133;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.config-header-wrapper .title {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-header-wrapper  .name {
+  font-size: 14px;
+  padding-bottom: 3px;
+}
+
+.config-header-wrapper  .version {
+  font-size: 12px;
+  color: #647279;
+}
+
+.config-header-wrapper  .button {
+  border: 1px solid rgba(156, 59, 232, 0.9);
+  color: rgba(156, 59, 232, 0.9);
+  user-select: none;
+  line-height: 26px;
+  height: 26px;
+  font-size: 12px;
+  padding: 0 20px;
+  transform: all 0.5s;
+  cursor: pointer;
+  transition: 0.5s;
+
+  
+}
+
+.config-header-wrapper .button:hover, .config-header-wrapper .button.active {
+  color: #1c1f25;
+  background: rgba(156, 59, 232, 0.9);
+}

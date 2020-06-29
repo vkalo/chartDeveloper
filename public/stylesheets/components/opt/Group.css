@@ -1,0 +1,39 @@
+.opt-group .group-title {
+  display        : flex;
+  justify-content: space-between;
+  height         : 44px;
+  line-height    : 44px;
+  padding        : 0 12px;
+  font-size      : 14px;
+  cursor         : pointer;
+
+}
+
+.opt-group .group-title .action-wrapper {
+  display    : flex;
+  align-items: center;
+  width      : 70px;
+}
+
+.opt-group .nothing {
+  transition: height .3s ease;
+  background: var(--C2-6);
+}
+
+.opt-group .nothing .group-title {
+  background: var(--C2-6);
+  font-size : 14px;
+}
+
+.opt-group .nothing .nothing {
+  border-bottom: 1px solid var(--C3-5);
+}
+
+.opt-group .nothing .group-title {
+  color: var(--C1-2);
+}
+
+
+.opt-group .nothing .array-title {
+  background: none;
+}
