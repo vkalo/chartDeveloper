@@ -1,8 +1,8 @@
-var {chartInfo} = require('../serve/loadChart');
-var { join } = require('path');
-var { readFile } = require('fs');
-// 模块中间件
-var libDir = join(__dirname, '../out');
+var { outfiles, errors } = require('../serve/index');
+// var { join } = require('path');
+// var { readFile } = require('fs');
+// // 模块中间件
+// var libDir = join(__dirname, '../out');
 
 module.exports = function (req, res, next) {
   if (req.path.startsWith('/chart')) {
@@ -17,9 +17,13 @@ module.exports = function (req, res, next) {
     //   }
     //   res.end(text);
     // })
-    const path = req.path.replace('/chart/','');
+    if (Object.keys(errors).length > 0) {
+      res.setHeader('Content-type', 'text/plain;charset=utf-8')
+      res.end('模块化失败。请先检查错误');
+    }
+    const path = req.path.replace('/chart/', '');
 
-    res.end(chartInfo.file[path].text);
+    res.end(outfiles[path]);
 
     // var id = req.originalUrl.split('?')[0];
     // // filePath = path.join(__dirname, '/public', filePath);

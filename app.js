@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejs = require('ejs');  //我是新引入的ejs插件
-require('./serve/watch');
+
 require('./serve/webSocket');
 
 var indexRouter = require('./routes/index');

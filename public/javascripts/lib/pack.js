@@ -23,7 +23,8 @@ var pack;
   var factoryMap = {};
   var modulesMap = {};
   var resourceMap = {};
-
+  window.loadingMap=loadingMap;
+  window.loadingStateMap=loadingStateMap;
   // packing function
   pack = function (id, deps, factory) {
     factoryMap[id] = factory;
@@ -33,7 +34,6 @@ var pack;
     deps.forEach(function (id) {
       opener.async(id);
     });
-
     var check = checkUp(id);
 
     if (!check()) {
@@ -197,7 +197,6 @@ var pack;
       if (loadingStateMap[id]) {
         return true;
       }
-
       for (var i = resourceList.length - 1; i >= 0; i--) {
         var resourceId = resourceList[i];
         if (!loadingStateMap[resourceId]) {

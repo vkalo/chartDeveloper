@@ -5,9 +5,13 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "bin": {
+    "nazaDev": "./bin/index.js"
+  },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "babel": "^6.23.0",
+    "commander": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "core-js": "^3.6.5",
     "debug": "~2.6.9",
@@ -19,6 +23,7 @@
     "mkdirp": "^1.0.4",
     "morgan": "~1.9.1",
     "nodejs-websocket": "^1.7.2",
+    "pack-opener-plugin": "^1.0.0",
     "uglify-es": "^3.3.9",
     "watch": "^1.0.2"
   },

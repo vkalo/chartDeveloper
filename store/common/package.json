@@ -1,0 +1,19 @@
+{
+  "author": "anonymous",
+  "version": "0.1.0",
+  "name": "chart",
+  "chartConfig": {
+    "name": "图表中文名",
+    "type": "chart",
+    "poster": "./poster.png",
+    "view": {
+      "width": 800,
+      "height": 700
+    },
+    "options": {},
+    "source": {}
+  },
+  "dependencies": {
+    "echarts": "4.8.0"
+  }
+}

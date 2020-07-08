@@ -41,7 +41,6 @@ export default new Vuex.Store({
         load('globe_3d@0.0.1/package.json'),
         load('globe_3d@0.0.1/index.js'),
       ]);
-
       chartConfig.defaultOptions = getOptionsValue(
         _.cloneDeep(chartConfig.options),
       );
