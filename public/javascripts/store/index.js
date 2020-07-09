@@ -12,7 +12,7 @@ export default new Vuex.Store({
     type: null,
     view: null,
     ChartComponent: null,
-    editor:false,
+    editor: false,
   },
   mutations: {
     /** 存储当前编辑页 screenId
@@ -28,18 +28,20 @@ export default new Vuex.Store({
         Vue.set(target, key, value);
       });
     },
-    initEditor(state,flag){
-      state.editor=flag;
+    initEditor(state, flag) {
+      state.editor = flag;
     }
   },
   actions: {
     async init({ commit }) {
+      const { data: config } = await axios.post("/config");
+      const { moduleName } = config;
       const [
         { chartConfig },
         { default: ChartComponent },
       ] = await Promise.all([
-        load('globe_3d@0.0.1/package.json'),
-        load('globe_3d@0.0.1/index.js'),
+        load(`${moduleName}/package.json`),
+        load(`${moduleName}/index.js`),
       ]);
       chartConfig.defaultOptions = getOptionsValue(
         _.cloneDeep(chartConfig.options),

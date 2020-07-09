@@ -41,6 +41,7 @@ export function load(src) {
   return new Promise((resolve, reject) => {
     try {
       opener(src, (text) => {
+        console.log(text)
         resolve(text);
       })
     } catch (err) {
@@ -61,4 +62,5 @@ export default {
   getHandler,
   getSource,
   setPx,
+  load,
 };

@@ -51,7 +51,7 @@ export default {
         },
       ],
       nav: {
-        label: '样式',
+        label: '发布',
       },
     };
   },

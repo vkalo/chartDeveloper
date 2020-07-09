@@ -5,15 +5,235 @@
   "chartConfig": {
     "name": "图表中文名",
     "type": "chart",
-    "poster": "./poster.png",
+    "poster": "chart@0.1.0/poster.png",
     "view": {
-      "width": 800,
-      "height": 700
+      "width": 140,
+      "height": 36
     },
-    "options": {},
-    "source": {}
+    "options": {
+      "align": {
+        "type": "select",
+        "name": "对齐方式",
+        "default": "center",
+        "list": [
+          {
+            "value": "center",
+            "label": "居中对齐"
+          },
+          {
+            "value": "left",
+            "label": "左对齐"
+          },
+          {
+            "value": "right",
+            "label": "右对齐"
+          }
+        ]
+      },
+      "textStyle": {
+        "type": "group",
+        "name": "文本样式",
+        "children": {
+          "fontFamily": {
+            "type": "select",
+            "name": "字体",
+            "default": "微软雅黑",
+            "list": [
+              {
+                "value": "微软雅黑",
+                "label": "微软雅黑"
+              },
+              {
+                "value": "宋体",
+                "label": "宋体"
+              }
+            ]
+          },
+          "fontSize": {
+            "type": "number",
+            "name": "字号",
+            "default": 32,
+            "max": 200,
+            "min": 0
+          },
+          "letterSpacing": {
+            "type": "number",
+            "name": "左右间距",
+            "default": 0,
+            "max": 200,
+            "min": 0
+          },
+          "color": {
+            "type": "color",
+            "name": "字体颜色",
+            "default": "#fff",
+            "description": "渐变色显示时无效"
+          },
+          "fontWeight": {
+            "type": "select",
+            "name": "字体粗细",
+            "default": "normal",
+            "list": [
+              {
+                "value": "normal",
+                "label": "normal"
+              },
+              {
+                "value": "bold",
+                "label": "bold"
+              },
+              {
+                "value": "bolder",
+                "label": "bolder"
+              },
+              {
+                "value": "lighter",
+                "label": "lighter"
+              },
+              {
+                "value": "100",
+                "label": "100"
+              },
+              {
+                "value": "200",
+                "label": "200"
+              },
+              {
+                "value": "300",
+                "label": "300"
+              },
+              {
+                "value": "400",
+                "label": "400"
+              },
+              {
+                "value": "500",
+                "label": "500"
+              },
+              {
+                "value": "600",
+                "label": "600"
+              },
+              {
+                "value": "700",
+                "label": "700"
+              },
+              {
+                "value": "800",
+                "label": "800"
+              },
+              {
+                "value": "900",
+                "label": "900"
+              }
+            ]
+          },
+          "gradient": {
+            "type": "group",
+            "show": false,
+            "name": "字体颜色渐变",
+            "children": {
+              "angle": {
+                "type": "number",
+                "name": "角度",
+                "default": 0,
+                "max": 360,
+                "min": 0
+              },
+              "gradientColor": {
+                "description": "使用渐变色将替代普通颜色",
+                "type": "array",
+                "name": "渐变颜色",
+                "seriesName": "颜色",
+                "default": [
+                  {
+                    "offset": 0,
+                    "color": "rgb(51, 209, 243)"
+                  },
+                  {
+                    "offset": 1,
+                    "color": "#FFED91"
+                  }
+                ],
+                "options": {
+                  "offset": {
+                    "name": "位置",
+                    "type": "range",
+                    "min": 0,
+                    "max": 1,
+                    "step": 0.1,
+                    "default": 0.5
+                  },
+                  "color": {
+                    "name": "颜色",
+                    "type": "color",
+                    "default": "#00D5BD"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "writingMode": {
+        "type": "select",
+        "name": "文字排列方式",
+        "default": "horizontal-tb",
+        "list": [
+          {
+            "value": "horizontal-tb",
+            "label": "水平"
+          },
+          {
+            "value": "vertical-rl",
+            "label": "垂直"
+          }
+        ]
+      },
+      "linkConfig": {
+        "type": "group",
+        "name": "超链接配置",
+        "children": {
+          "href": {
+            "type": "text",
+            "name": "超链接",
+            "default": ""
+          },
+          "newWindow": {
+            "type": "boolean",
+            "name": "是否新开窗口",
+            "default": false
+          }
+        }
+      }
+    },
+    "source": {
+      "data": {
+        "fields": {
+          "value": {
+            "description": "值",
+            "type": "string",
+            "required": true
+          }
+        },
+        "data": [
+          {
+            "value": "我是标题"
+          }
+        ],
+        "description": "标题接口",
+        "handle": "updateData"
+      }
+    }
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "echarts": "4.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-strict-mode": "^7.2.0",
+    "@babel/preset-env": "^7.5.5"
   }
 }

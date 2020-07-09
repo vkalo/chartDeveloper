@@ -8,3 +8,17 @@
   align-items: center;
   line-height: 28px;
 }
+
+.publish-panel-wraper .poster span {
+  display: inline-block;
+  margin: 0 auto 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.publish-panel-wraper .poster img {
+  display: block;
+  width  : 100%;
+  height : 150px;
+  border : 1px solid #999;
+}

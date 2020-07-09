@@ -2,15 +2,18 @@
 
 // 引入依赖
 var program = require('commander');
-const { deleteFolder, copyFolder } = require('../serve/utils');
+const { copyFolder, isEmpty, warn } = require('../serve/utils');
+const { setUrl, setInlet } = require('../serve/commande');
 const { join } = require('path');
-chartType = {
+const chartType = {
   'common': true,
 }
+
 // 定义版本和参数选项
 program
   .version('0.1.0', '-v, --version')
-  .option('-i, --init [type]', 'init build environment', 'common')
+  .option('-i, --init [type]', 'init build environment')
+  .option('-u, --url [url]', 'set the url which you want send to')
   .option('-d, --dev', 'run dev')
   .option('-b, --build', 'build a package');
 
@@ -22,16 +25,25 @@ program.on('--help', function () {
 program.parse(process.argv);
 
 if (program.init) {
-  console.log(program.init)
   const type = chartType[program.init] ? program.init : 'common';
   const inlet = process.cwd();
   const chartFolder = join(__dirname, '../store/' + type);
-  deleteFolder(inlet);
+  if (!isEmpty(inlet)) {
+    warn('请选择空文件夹');
+    return null;
+  }
   copyFolder(chartFolder, inlet);
+  console.log('初始化完成');
+}
+
+if (program.url) {
+  setUrl(program.url)
 }
 
 if (program.dev) {
-  console.log('generate something')
+  console.log('启动服务器')
+  setInlet(process.cwd());
+  require('./www');
 }
 
 if (program.build) {

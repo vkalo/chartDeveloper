@@ -23,11 +23,18 @@ const template = `
         @change="selectChange('type', $event)"
       />
     </PageItem>
+    <PageItem label="上传封面">
+      <div class="poster">
+        <span @click="upload">上传</span>
+        <img :src='img' />
+      </div>
+    </PageItem>
   </div>
 `;
 import PageItem from '../components/PageItem.js';
-
-const {mapState, mapActions} = Vuex
+import { load } from '../utils/index.js'
+const protocolReg = /^http(s)?:\/\//;
+const { mapState, mapActions } = Vuex;
 export default {
   name: 'publish-panel',
   template,
@@ -60,7 +67,12 @@ export default {
     };
   },
   computed: {
-    ...mapState(['view']),
+    ...mapState(['view', 'poster']),
+    img() {
+      console.log(this.poster);
+      const poster = this.poster;
+      return protocolReg.test(poster) ? poster : opener(poster);
+    },
   },
   methods: {
     ...mapActions(['updateValue']),
@@ -70,6 +82,20 @@ export default {
         draftState: { [key]: value },
       });
     },
-    selectChange() {},
+    selectChange() { },
+    upload() {
+      const input = document.createElement('input');
+      input.type = "file";
+      input.accept = "image/*";
+      input.click();
+      input.addEventListener('change', (e) => {
+        const formData = new FormData();
+        formData.append('poster', input.files[0]);
+        console.log('发送')
+        axios.post('/poster', formData).then(res => {
+          console.log(res);
+        })
+      })
+    },
   },
 };

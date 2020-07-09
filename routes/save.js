@@ -1,10 +1,13 @@
-var { exportChart } = require('../serve/outChart');
 var express = require('express');
 var router = express.Router();
+var { sendModule } = require('../serve/sendModule')
 
 router.post('/', function (req, res, next) {
-  exportChart('/Users/likairui/Desktop/demos/chartDeveloper/out/');
-  res.send('respond with a save');
+  sendModule().then(() => {
+    res.json({ status: true, message: '保存成功' });
+  }).catch((err) => {
+    res.json({ status: false, message: err });
+  })
 });
 
 module.exports = router;

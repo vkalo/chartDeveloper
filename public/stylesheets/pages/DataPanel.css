@@ -3,10 +3,6 @@
   flex-direction: column;
 }
 
-.data-panel-wraper .item span {
-  margin: 5px;
-}
-
 .code-wrapper {
   position  : relative;
   min-height: 138px;

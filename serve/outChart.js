@@ -1,8 +1,8 @@
 
 const { join } = require('path');
-const { exportModule, inlet, moduleName } = require('../serve/index');
+const { exportModule, inlet, moduleName } = require('./index');
 const { zipFile, outFile, deleteFolder, readFolder } = require('./utils');
-
+const { mkdirSync } = require('fs');
 
 const config = {
   "inlet": "/Users/likairui/Desktop/demos/chart/",
@@ -12,29 +12,37 @@ const config = {
   "extra": ["/Users/likairui/Desktop/demos/chart/package.json"]
 };
 
-async function exportChart(outlet) {
+async function exportFiles() {
   console.log('开始输出图表')
-  deleteFolder(outlet); // 文件夹初始化
-  // mkdirSync(outlet);
-  const out = {};
 
+  const files = {};
   const originFiles = Object.entries(readFolder(inlet)).reduce((res, [path, text]) => {
     res[path.replace(config.inlet, '')] = text;
     return res;
   }, {});
 
-  out[`${moduleName}/index.zip`] = await zipFile(originFiles);
-  Object.assign(out, exportModule());
+  files[`${moduleName}/index.zip`] = await zipFile(originFiles);
+  Object.assign(files, exportModule());
 
-  const zipText = await zipFile(out);
+  const zip = await zipFile(files);
+  console.log('图表输出完成');
+  return { files, zip };
+}
 
-  Object.entries(out).forEach(([path, text]) => {
+
+async function outFiles(outlet) {
+  deleteFolder(outlet); // 文件夹初始化
+  mkdirSync(outlet);
+  const { files, zip } = await exportFiles();
+
+  Object.entries(files).forEach(([path, text]) => {
     outFile(join(outlet, path), text);
   });
-  outFile(outlet + "/out.zip", zipText);
-  console.log('图表输出完成')
+
+  outFile(outlet + "/out.zip", zip);
 }
 
 module.exports = {
-  exportChart,
+  exportFiles,
+  outFiles,
 }
