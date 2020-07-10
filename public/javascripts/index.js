@@ -3,6 +3,7 @@ import ConfigPanel from './pages/configPanel.js';
 import store from './store/index.js';
 import './components/Opt/js/register.js';
 import './utils/webSocket.js';
+import components from './utils/components.js';
 
 require.config({ paths: { 'vs': '/javascripts/lib/monaco-editor/min/vs' }});
 require(['vs/editor/editor.main'], function() {
@@ -16,6 +17,10 @@ const template = `
     <ConfigPanel/>
   </div>
 `
+
+Vue.use(components);
+
+
 var app = new Vue({
   el: '#app',
   components: {

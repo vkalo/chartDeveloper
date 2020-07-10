@@ -14,8 +14,8 @@ async function exportFiles() {
   }, {});
 
   files[`${moduleName}/index.zip`] = await zipFile(originFiles);
-  Object.assign(files, exportModule());
 
+  Object.assign(files, exportModule());
   const zip = await zipFile(files);
   console.log('图表输出完成');
   return { files, zip };

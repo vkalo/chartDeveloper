@@ -32,7 +32,7 @@ const template = `
   </div>
 `;
 import PageItem from '../components/PageItem.js';
-import { load } from '../utils/index.js'
+
 const protocolReg = /^http(s)?:\/\//;
 const { mapState, mapActions } = Vuex;
 export default {
@@ -93,7 +93,10 @@ export default {
         formData.append('poster', input.files[0]);
         console.log('发送')
         axios.post('/poster', formData).then(res => {
+          this.$message({type:'info',message:'保存成功'});
           console.log(res);
+        }).catch(()=>{
+          this.$message({type:'error',message:'保存失败'});
         })
       })
     },

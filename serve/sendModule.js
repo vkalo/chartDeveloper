@@ -17,11 +17,15 @@ async function sendModule() {
   form.append("mark", moduleInfo.moduleName);
   form.append("chart", createReadStream(join(__dirname, "../out/out.zip")));
   return new Promise((resolve, reject) => {
-    form.submit(url, function (err, res) {
-      if (err || !String(res.statusCode).startsWith('2')) {
-        reject(err,res);
+    form.submit(url, function (error, res) {
+      if (error || !String(res.statusCode).startsWith('2')) {
+        const data = { error, status: res.statusCode, message: res.statusMessage };
+        console.log('保存失败');
+        console.log(data)
+        reject(data);
         return;
       }
+      console.log("保存成功")
       deleteFolder(outlet);
       resolve();
     });

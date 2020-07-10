@@ -1,0 +1,39 @@
+.base-message-wraper {
+  height       : 36px;
+  display      : flex;
+  align-items  : center;
+  padding      : 7px 16px 7px 17px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display      : flex;
+  width        : fit-content;
+}
+
+.base-message-wraper span {
+  text-indent: 4px;
+  font-size  : 14px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color      : rgba(255, 255, 255, 0.85);
+  margin-left: 5px;
+}
+
+.base-message-wraper.info {
+  background: rgba(98, 64, 144, 1);
+  border    : 1px solid rgba(172, 110, 255, 1);
+}
+
+.base-message-wraper.success {
+  background: rgba(16, 122, 84, 1);
+  border    : 1px solid rgba(2, 215, 138, 1);
+}
+
+.base-message-wraper.warning {
+  background: rgba(141, 102, 54, 1);
+  border    : 1px solid rgba(253, 175, 78, 1);
+}
+
+.base-message-wraper.error {
+  background: rgba(141, 57, 55, 1);
+  border    : 1px solid rgba(251, 85, 82, 1);
+}

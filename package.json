@@ -1,6 +1,6 @@
 {
   "name": "naza-dev",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "naza visualization develope tools",
   "main": "node ./bin/www",
   "scripts": {
@@ -27,7 +27,7 @@
     "mkdirp": "^1.0.4",
     "morgan": "~1.9.1",
     "nodejs-websocket": "^1.7.2",
-    "pack-opener-plugin": "^1.0.4"
+    "pack-opener-plugin": "^1.0.6"
   },
   "author": "kalo",
   "license": "ISC"
