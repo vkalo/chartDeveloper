@@ -1,6 +1,5 @@
 {
 	"inlet": "/Users/likairui/Desktop/demos/test",
-	"outlet": "/Users/likairui/Desktop/demos/chartDeveloper/out/",
 	"moduleName": "three_d_bar@0.0.1",
 	"url": "http://47.110.138.243:3000/api/charts/submit"
 }

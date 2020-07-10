@@ -4,7 +4,7 @@ var { exportFiles } = require('./outChart');
 var FormData = require('form-data');
 const { outFile, deleteFolder } = require('./utils');
 const configPath = join(__dirname, '../config.json');
-const { moduleName } = require('./index');
+const moduleInfo = require('./index');
 
 async function sendModule() {
   const { zip } = await exportFiles();
@@ -14,7 +14,7 @@ async function sendModule() {
   deleteFolder(outlet);
   mkdirSync(outlet);
   await outFile(join(__dirname, "../out/out.zip"), zip);
-  form.append("mark", moduleName);
+  form.append("mark", moduleInfo.moduleName);
   form.append("chart", createReadStream(join(__dirname, "../out/out.zip")));
   return new Promise((resolve, reject) => {
     form.submit(url, function (err, res) {
