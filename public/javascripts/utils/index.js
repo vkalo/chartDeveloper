@@ -61,7 +61,7 @@ export function setPx(n) {
  * @param id String 图层的id
  * @returns Array 数据
  */
-export async function getData({ type, fields, data, api }) {
+export async function getData({ type, fields={}, data, api }) {
   try {
     switch (type) {
       case 'static':
