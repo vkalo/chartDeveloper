@@ -1,4 +1,4 @@
-import { getOptionsValue, load } from '../utils/index.js';
+import { getOptionsValue, load, getData } from '../utils/index.js';
 
 Vue.use(Vuex);
 
@@ -46,9 +46,15 @@ export default new Vuex.Store({
       chartConfig.defaultOptions = getOptionsValue(
         _.cloneDeep(chartConfig.options),
       );
-      Object.entries(chartConfig).forEach(([key, value]) => {
+      await Promise.all(Object.entries(chartConfig).map(async ([key, value]) => {
+        if (key === 'source') {
+          await Promise.all(Object.entries(value).map(async ([sourceKey, source]) => {
+            const data = await getData(source);
+            source.data = data;
+          }));
+        }
         commit('setValue', { key, value });
-      });
+      }));
       commit('setValue', { key: 'ChartComponent', value: ChartComponent });
     },
     updateValue({ commit }, { key, draftState }) {

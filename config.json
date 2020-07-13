@@ -1,5 +1,5 @@
 {
 	"inlet": "/Users/likairui/Desktop/demos/test",
-	"moduleName": "chart@0.1.0",
+	"moduleName": "heatmap_cartesian@0.0.1",
 	"url": "http://47.110.138.243:3000/api/charts/submit"
 }

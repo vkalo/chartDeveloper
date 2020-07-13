@@ -41,7 +41,6 @@ export function load(src) {
   return new Promise((resolve, reject) => {
     try {
       opener(src, (text) => {
-        console.log(text)
         resolve(text);
       })
     } catch (err) {
@@ -53,9 +52,45 @@ export function load(src) {
  * 设置像素数值方法
  * @param {String|Number}} n 像素数值
  */
-export function setPx(n){
+export function setPx(n) {
   return n ? parseInt(n) + 'px' : null;
 };
+
+/** 获取组件数据
+ * @param source Object 组件数据配置
+ * @param id String 图层的id
+ * @returns Array 数据
+ */
+export async function getData({ type, fields, data, api }) {
+  try {
+    switch (type) {
+      case 'static':
+        data = JSON.parse(data);
+        break;
+      case 'api': {
+        data = (await axios.get('data',{
+          params:{
+            url:encodeURIComponent(api),
+          }
+        })).data;
+      }
+    }
+
+    // 数据映射
+    data = Array.isArray(data) ? data : [data];
+    return data.map((item) => {
+      Object.keys(fields).forEach((key) => {
+        if (item[fields[key]]) {
+          item[key] = item[fields[key]];
+        }
+      });
+      return item;
+    });
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+}
 
 export default {
   getOptionsValue,
@@ -63,4 +98,5 @@ export default {
   getSource,
   setPx,
   load,
+  getData,
 };

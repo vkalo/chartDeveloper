@@ -23,8 +23,16 @@ export default {
   props: ["name", "verson", "activeKey"],
   methods: {
     submit() {
-      axios.post("/save");
-      // console.log('发布')
+      axios.post("/save").then(({data})=>{
+        if(data.status){
+          this.$message({type:'info',message:'保存成功'});
+        }else{
+          this.$message({type:'error',message:'保存失败'});
+        }
+
+      }).catch(()=>{
+        this.$message({type:'error',message:'保存失败'});
+      });
     }
   }
 };

@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var configRouter = require('./routes/config');
 var saveRouter = require('./routes/save');
 var posterRouter = require('./routes/poster');
+var dataRouter = require('./routes/data');
 // 中间件
 var moduleMiddle = require('./middle/module');
 
@@ -33,6 +34,7 @@ app.use('/config', configRouter);
 app.use('/save', saveRouter);
 app.use('/chart',moduleMiddle);
 app.use('/poster',posterRouter);
+app.use('/data',dataRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
