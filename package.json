@@ -1,6 +1,6 @@
 {
   "name": "naza-dev",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "naza visualization develope tools",
   "main": "node ./bin/www",
   "scripts": {

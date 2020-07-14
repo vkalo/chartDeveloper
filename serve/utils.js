@@ -1,6 +1,6 @@
 const { statSync, existsSync, readdirSync, unlinkSync, rmdirSync, writeFileSync, readFileSync } = require('fs');
 const { dirname, join } = require('path');
-
+const { currDirRegExp } = require('./reg');
 /**
  * 删除文件夹
  * @param {String} path 
@@ -137,6 +137,16 @@ function warn(message) {
   console.log(styles[key][0] + '%s' + styles[key][1], message)
 }
 
+function replacePackage(text, moduleName) {
+  const package = JSON.parse(text);
+  if (package.chartConfig && currDirRegExp.test(package.chartConfig.poster)) {
+    package.chartConfig.poster = join(moduleName, package.chartConfig.poster);
+    return JSON.stringify(package, null, '\t');
+  } else {
+    return text;
+  }
+}
+
 module.exports = {
   deleteFolder,
   copyFolder,
@@ -146,4 +156,5 @@ module.exports = {
   setModule,
   isEmpty,
   warn,
+  replacePackage,
 }

@@ -3,7 +3,7 @@
 // 引入依赖
 var program = require('commander');
 const { copyFolder, isEmpty, warn } = require('../serve/utils');
-const { setUrl, setInlet } = require('../serve/commande');
+const { setUrl, setInlet, executePath } = require('../serve/commande');
 const { join } = require('path');
 const chartType = {
   'common': true,
@@ -14,8 +14,8 @@ program
   .version('0.1.0', '-v, --version')
   .option('-i, --init [type]', 'init build environment')
   .option('-u, --url [url]', 'set the url which you want send to')
-  .option('-d, --dev', 'run dev')
-  .option('-b, --build', 'build a package');
+  .option('-d, --dev [path]', 'run dev')
+  .option('-b, --build [path]', 'build a package');
 
 // 必须在.parse()之前，因为node的emit()是即时的
 program.on('--help', function () {
@@ -41,11 +41,13 @@ if (program.url) {
 }
 
 if (program.dev) {
-  console.log('启动服务器')
-  setInlet(process.cwd());
+  const devPath = typeof program.dev === 'string' ? program.dev : '';
+  setInlet(executePath(devPath));
   require('./www');
 }
 
 if (program.build) {
-  console.log('remove something')
+  const outPath = typeof program.build === 'string' ? program.build : './out';
+  const { outFiles } = require('../serve/outChart');
+  outFiles(executePath(outPath));
 }
